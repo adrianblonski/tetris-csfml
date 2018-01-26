@@ -15,5 +15,5 @@ int main(void){
 }
 
 /*TODO:
-   - punktacja i poziomy
+   - gfx & sfx improvement
 */

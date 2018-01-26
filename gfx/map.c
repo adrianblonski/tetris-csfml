@@ -54,7 +54,7 @@ void shapeRotate(){
 }
 
 void shapePlace(){
-   if(position.y<-1) return;
+   if(position.y<0) return;
    for(int i=0;i<current.siz;i++){
       map[position.y+current.offset[i].y][position.x+current.offset[i].x] = current.offset[i].type;
    }

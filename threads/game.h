@@ -1,7 +1,6 @@
 #ifndef game_H
 #define game_H
 
-//#include <stdio.h>
 #include <unistd.h>
 #include "../gfx/map.h"
 
