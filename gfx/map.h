@@ -13,7 +13,6 @@ typedef enum { false, true } bool;
 
 typedef struct pt{
    int x, y, type;
-   bool obstacle;
 }Point;
 
 typedef struct shp{
@@ -30,6 +29,7 @@ int map[MAP_HEIGHT][MAP_WIDTH];
 
 void mapInit();
 void shapeInit(int, int);
+void shapeCleanup();
 void shapePlace();
 void shapeFall();
 void shapeLeft();

@@ -7,22 +7,25 @@ void *gameStart(){
 
 void gameLoop(){
    while(running){
-      checkMap();
+      if(checkMap()){
+         usleep(600000);
+      }
       shapeFall();
       usleep(speed);
    }
 }
 
-void checkMap(){
+bool checkMap(){
    for(int i=0;i<current.siz;i++){
-      if(current.offset[i].obstacle == true){
-         int x = current.offset[i].x+position.x;
-         int y = current.offset[i].y+position.y;
-         if(y>=MAP_HEIGHT-1 || map[y+1][x]!=0){
-            shapePlace();
-         }
+      int x = current.offset[i].x+position.x;
+      int y = current.offset[i].y+position.y;
+      if(y>=MAP_HEIGHT-1 || map[y+1][x]!=0){
+         shapePlace();
+         printf("placing at x=%d y=%d\n", x, y);
+         return true;
       }
    }
+   return false;
 
    //TUTAJ MA BY LINIJKI MAPY, KTORA JEST ZAPELNIONA
 }
