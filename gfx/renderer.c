@@ -21,7 +21,7 @@ void windowShow(){
             running = false;
          }else if(event.type == sfEvtKeyPressed){
             if(event.key.code == sfKeySpace) {
-               shapePlace();
+               shapeRotate();
             }else if(event.key.code == sfKeyLeft) {
                shapeLeft();
             }else if(event.key.code == sfKeyRight) {

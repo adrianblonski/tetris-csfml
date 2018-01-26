@@ -10,12 +10,29 @@ void mapInit(){
 }
 
 void shapeInit(int type, int x){
+   currentType = type;
    current = shape[type];
    position = (Point){x, -1};
 }
 
+void shapeRotate(){
+   if(currentType==2) return;
+   for(int i=0;i<current.siz;i++){
+      int x = current.offset[i].x;
+      int y = current.offset[i].y;
+      if(!(-y+position.x > -1 && map[x+position.y][-y+position.x]==0)) return;
+   }
+
+   for(int i=0;i<current.siz;i++){
+      int x = current.offset[i].x;
+      int y = current.offset[i].y;
+      current.offset[i].x = -y;
+      current.offset[i].y = x;
+   }
+}
+
 void shapePlace(){
-   if(position.y==-2) return;
+   if(position.y<-1) return;
    for(int i=0;i<current.siz;i++){
       map[position.y+current.offset[i].y][position.x+current.offset[i].x] = current.offset[i].type;
    }
@@ -25,25 +42,21 @@ void shapePlace(){
 }
 
 void shapeLeft(){
-   bool possible = true;
    for(int i=0;i<current.siz;i++){
       int x = current.offset[i].x+position.x;
       int y = current.offset[i].y+position.y;
-      possible = (x > 0 && map[y][x-1]==0) ? true : false;
-      if(!possible) break;
+      if(!(x > 0 && map[y][x-1]==0)) return;
    }
-   if(possible) position.x--;
+   position.x--;
 }
 
 void shapeRight(){
-   bool possible = true;
    for(int i=0;i<current.siz;i++){
       int x = current.offset[i].x+position.x;
       int y = current.offset[i].y+position.y;
-      possible = (x < MAP_WIDTH-1 && map[y][x+1]==0) ? true : false;
-      if(!possible) break;
+      if(!(x < MAP_WIDTH-1 && map[y][x+1]==0)) return;
    }
-   if(possible) position.x++;
+   position.x++;
 }
 
 void shapeFall(){
