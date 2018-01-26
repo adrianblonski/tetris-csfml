@@ -20,6 +20,7 @@ typedef struct shp{
    Point * offset;
 }Shape;
 
+int score;
 int currentType;
 int nextShape;
 bool running;
@@ -29,6 +30,7 @@ Shape shape[7];
 int map[MAP_HEIGHT][MAP_WIDTH];
 
 void mapInit();
+void checkScore();
 void shapeInit(int, int);
 void shapeRotate();
 void shapeCleanup();

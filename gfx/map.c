@@ -1,12 +1,34 @@
 #include "map.h"
 
 void mapInit(){
+   score = 0;
    srand(time(NULL));
    nextShape = rand() % 5;
-   running = true;
    memset(map, 0, sizeof(int) * MAP_HEIGHT * MAP_WIDTH);
    current.siz = -1;
    shapeCleanup();
+   running = true;
+}
+
+void checkScore(){
+   for(int y=0;y<MAP_HEIGHT;y++){
+      int counter = 0;
+      for(int x=0;x<MAP_WIDTH;x++){
+         if(map[y][x]!=0) counter++;
+      }
+      if(counter==MAP_WIDTH){
+         for(int i=y;i>=0;i--){
+            for(int x=0;x<MAP_WIDTH;x++){
+               map[i][x]=map[i-1][x];
+            }
+         }
+         for(int x=0;x<MAP_WIDTH;x++){
+            map[0][x]=0;
+         }
+         checkScore();
+         break;
+      }
+   }
 }
 
 void shapeInit(int type, int x){

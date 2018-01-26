@@ -15,6 +15,5 @@ int main(void){
 }
 
 /*TODO:
-   - obracanie elementów
    - punktacja i poziomy
 */

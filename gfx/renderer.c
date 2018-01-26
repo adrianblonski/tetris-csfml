@@ -16,6 +16,7 @@ void windowShow(){
    sfEvent event;
    while(running){
       sfRenderWindow_clear(win, bgColor);
+      checkScore();
       while(sfRenderWindow_pollEvent(win, &event)){
          if(event.type == sfEvtClosed){
             running = false;

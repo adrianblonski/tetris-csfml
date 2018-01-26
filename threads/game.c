@@ -21,7 +21,7 @@ bool checkMap(){
       int y = current.offset[i].y+position.y;
       if(y>=MAP_HEIGHT-1 || map[y+1][x]!=0){
          shapePlace();
-         printf("placing at x=%d y=%d\n", x, y);
+         //printf("placing at x=%d y=%d\n", x, y);
          return true;
       }
    }
