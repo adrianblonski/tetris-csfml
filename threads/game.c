@@ -1,17 +1,20 @@
 #include "game.h"
 
 void *gameStart(){
+   freeze = true;
    speed = 300000;
    gameLoop();
 }
 
 void gameLoop(){
    while(running){
-      if(checkMap()){
-         usleep(600000);
+      if(!freeze){
+         if(checkMap()){
+            usleep(600000);
+         }
+         shapeFall();
+         usleep(speed);
       }
-      shapeFall();
-      usleep(speed);
    }
 }
 

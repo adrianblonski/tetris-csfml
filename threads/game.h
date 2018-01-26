@@ -5,6 +5,7 @@
 #include "../gfx/map.h"
 
 int speed;
+bool freeze;
 void *gameStart();
 void gameLoop();
 bool checkMap();

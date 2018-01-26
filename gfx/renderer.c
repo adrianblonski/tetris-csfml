@@ -3,16 +3,22 @@
 void windowInit(int width, int height, const char * title){
    sfVideoMode mode = {width, height};
    win = sfRenderWindow_create(mode, title, sfClose, NULL);
+   font = sfFont_createFromFile("fonts/font.ttf");
+   if(!font || !win) exit(1);
+   text = sfText_create();
+   sfText_setFont(text, font);
 
    block[0] = blockInit("images/outline.jpg");
    block[1] = blockInit("images/block.png");
    block[2] = blockInit("images/outline.jpg");
 
+   freeze = false;
    windowShow();
 }
 
 void windowShow(){
    sfColor bgColor = sfBlack;
+
    sfEvent event;
    while(running){
       sfRenderWindow_clear(win, bgColor);
@@ -43,7 +49,17 @@ void windowShow(){
    sfRenderWindow_destroy(win);
 }
 
+void drawText(const char * str, int x, int y, int size){
+   sfText_setCharacterSize(text, size);
+   sfText_setPosition(text, (sfVector2f){x,y});
+   sfText_setString(text, str);
+   sfText_setColor(text, sfWhite);
+
+   sfRenderWindow_drawText(win, text, NULL);
+}
+
 void drawGui(sfSprite * outline){
+   //BORDERS
    for(int i=0;i<MAP_WIDTH+10;i++){
       setSpritePos(outline, i*SCALE, 0);
       sfRenderWindow_drawSprite(win, outline, NULL);
@@ -68,6 +84,18 @@ void drawGui(sfSprite * outline){
       setSpritePos(outline, (MAP_WIDTH+1)*SCALE, i*SCALE);
       sfRenderWindow_drawSprite(win, outline, NULL);
    }
+
+   //TEXT
+   char str[20];
+   char buff[12];
+   sprintf(buff, "%d", score);
+   strcpy(str, "SCORE:   ");
+   strcat(str, buff);
+   drawText(str, (MAP_WIDTH+3)*SCALE, 7.5*SCALE, SCALE);
+   sprintf(buff, "%d", level);
+   strcpy(str, "LEVEL:    ");
+   strcat(str, buff);
+   drawText(str, (MAP_WIDTH+3)*SCALE, 9*SCALE, SCALE);
 }
 
 void drawMap(){

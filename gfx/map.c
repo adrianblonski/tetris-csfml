@@ -2,6 +2,7 @@
 
 void mapInit(){
    score = 0;
+   level = 1;
    srand(time(NULL));
    nextShape = rand() % 6;
    memset(map, 0, sizeof(int) * MAP_HEIGHT * MAP_WIDTH);
@@ -25,6 +26,7 @@ void checkScore(){
          for(int x=0;x<MAP_WIDTH;x++){
             map[0][x]=0;
          }
+         score++;
          checkScore();
          break;
       }

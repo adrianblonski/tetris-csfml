@@ -21,6 +21,7 @@ typedef struct shp{
 }Shape;
 
 int score;
+int level;
 int currentType;
 int nextShape;
 bool running;
