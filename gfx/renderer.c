@@ -10,7 +10,6 @@ void windowInit(int width, int height, const char * title){
 
    block[0] = blockInit("images/outline.png");
    block[1] = blockInit("images/block.png");
-   block[2] = blockInit("images/outline.png");
 
    freeze = false;
    windowShow();
@@ -46,6 +45,8 @@ void windowShow(){
       sfTexture_destroy(block[i].texture);
       sfSprite_destroy(block[i].sprite);
    }
+   sfFont_destroy(font);
+   sfText_destroy(text);
    sfRenderWindow_destroy(win);
 }
 

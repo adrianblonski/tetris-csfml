@@ -6,7 +6,7 @@
 #include "../threads/game.h"
 #include "map.h"
 
-#define blocksCount 3
+#define blocksCount 2
 
 sfRenderWindow * win;
 sfFont * font;
