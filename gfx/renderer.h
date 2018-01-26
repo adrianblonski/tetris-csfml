@@ -27,6 +27,5 @@ void drawGui(sfSprite *);
 void drawText(const char *, int, int, int);
 void setSpritePos(sfSprite *, int, int);
 Block blockInit(const char *);
-sfSprite * Outline();
 
 #endif

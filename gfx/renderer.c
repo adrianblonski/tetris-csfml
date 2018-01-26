@@ -8,9 +8,9 @@ void windowInit(int width, int height, const char * title){
    text = sfText_create();
    sfText_setFont(text, font);
 
-   block[0] = blockInit("images/outline.jpg");
+   block[0] = blockInit("images/outline.png");
    block[1] = blockInit("images/block.png");
-   block[2] = blockInit("images/outline.jpg");
+   block[2] = blockInit("images/outline.png");
 
    freeze = false;
    windowShow();
@@ -96,6 +96,15 @@ void drawGui(sfSprite * outline){
    strcpy(str, "LEVEL:    ");
    strcat(str, buff);
    drawText(str, (MAP_WIDTH+3)*SCALE, 9*SCALE, SCALE);
+
+   //PREVIEW
+   for(int i=0;i<4;i++){
+      setSpritePos(block[1].sprite,
+                  (shape[nextShape].offset[i].x + MAP_WIDTH+3)*SCALE, 
+                  (shape[nextShape].offset[i].y + 4)*SCALE
+      );
+      sfRenderWindow_drawSprite(win, block[1].sprite, NULL);
+   }
 }
 
 void drawMap(){

@@ -15,5 +15,6 @@ int main(void){
 }
 
 /*TODO:
+   - stadnardize shape offsets
    - gfx & sfx improvement
 */

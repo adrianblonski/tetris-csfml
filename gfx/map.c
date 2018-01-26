@@ -35,7 +35,11 @@ void checkScore(){
 
 void shapeInit(int type, int x){
    currentType = type;
-   current = shape[type];
+   current.siz = shape[type].siz;
+   Point * pt = malloc(sizeof(Point) * shape[type].siz);
+   for(int i=0;i<shape[type].siz;i++)
+      pt[i] = shape[type].offset[i];
+   current.offset = pt;
    position = (Point){x, -1};
 }
 
