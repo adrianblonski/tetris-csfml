@@ -3,7 +3,7 @@
 void mapInit(){
    score = 0;
    srand(time(NULL));
-   nextShape = rand() % 5;
+   nextShape = rand() % 6;
    memset(map, 0, sizeof(int) * MAP_HEIGHT * MAP_WIDTH);
    current.siz = -1;
    shapeCleanup();
@@ -60,7 +60,7 @@ void shapePlace(){
    }
    shapeCleanup();
    shapeInit(nextShape, 4);
-   nextShape = rand() % 5;
+   nextShape = rand() % 6;
 }
 
 void shapeLeft(){
@@ -104,7 +104,7 @@ void shapeCleanup(){
 
    //shape O
    shape[2].siz = 4;
-   shape[2].offset = malloc(sizeof(Point) * shape[1].siz);
+   shape[2].offset = malloc(sizeof(Point) * shape[2].siz);
    shape[2].offset[0] = (Point){ 0, 0, 1};
    shape[2].offset[1] = (Point){ 1, 0, 1};
    shape[2].offset[2] = (Point){ 0,-1, 1};
@@ -112,7 +112,7 @@ void shapeCleanup(){
 
    //shape L
    shape[3].siz = 4;
-   shape[3].offset = malloc(sizeof(Point) * shape[1].siz);
+   shape[3].offset = malloc(sizeof(Point) * shape[3].siz);
    shape[3].offset[0] = (Point){ 0, 0, 1};
    shape[3].offset[1] = (Point){ 1, 0, 1};
    shape[3].offset[2] = (Point){ 1,-1, 1};
@@ -120,9 +120,25 @@ void shapeCleanup(){
 
    //shape J
    shape[4].siz = 4;
-   shape[4].offset = malloc(sizeof(Point) * shape[1].siz);
+   shape[4].offset = malloc(sizeof(Point) * shape[4].siz);
    shape[4].offset[0] = (Point){ 0, 0, 1};
    shape[4].offset[1] = (Point){ 1, 0, 1};
    shape[4].offset[2] = (Point){ 0,-1, 1};
    shape[4].offset[3] = (Point){ 0,-2, 1};
+
+   //shape S
+   shape[5].siz = 4;
+   shape[5].offset = malloc(sizeof(Point) * shape[5].siz);
+   shape[5].offset[0] = (Point){ 0, 0, 1};
+   shape[5].offset[1] = (Point){ 1, 0, 1};
+   shape[5].offset[2] = (Point){ 1,-1, 1};
+   shape[5].offset[3] = (Point){ 2,-1, 1};
+
+   //shape Z
+   shape[6].siz = 4;
+   shape[6].offset = malloc(sizeof(Point) * shape[6].siz);
+   shape[6].offset[0] = (Point){ 0, 0, 1};
+   shape[6].offset[1] = (Point){-1, 0, 1};
+   shape[6].offset[2] = (Point){-1,-1, 1};
+   shape[6].offset[3] = (Point){-2,-1, 1};
 }
