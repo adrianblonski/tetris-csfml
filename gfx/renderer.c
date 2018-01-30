@@ -11,7 +11,7 @@ void windowInit(int width, int height, const char * title){
    block[0] = blockInit("images/outline.png");
    block[1] = blockInit("images/block.png");
 
-   freeze = false;
+   running = true;
    windowShow();
 }
 
@@ -19,6 +19,9 @@ void windowShow(){
    sfColor bgColor = sfBlack;
 
    sfEvent event;
+
+   pthread_create(&game, NULL, gameStart, NULL);
+
    while(running){
       sfRenderWindow_clear(win, bgColor);
       checkScore();
@@ -48,6 +51,7 @@ void windowShow(){
    sfFont_destroy(font);
    sfText_destroy(text);
    sfRenderWindow_destroy(win);
+   pthread_join(game, NULL);
 }
 
 void drawText(const char * str, int x, int y, int size){
@@ -101,7 +105,7 @@ void drawGui(sfSprite * outline){
    //PREVIEW
    for(int i=0;i<4;i++){
       setSpritePos(block[1].sprite,
-                  (shape[nextShape].offset[i].x + MAP_WIDTH+3)*SCALE, 
+                  (shape[nextShape].offset[i].x+2 + MAP_WIDTH+3)*SCALE, 
                   (shape[nextShape].offset[i].y + 4)*SCALE
       );
       sfRenderWindow_drawSprite(win, block[1].sprite, NULL);

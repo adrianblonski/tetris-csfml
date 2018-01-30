@@ -2,6 +2,7 @@
 #define renderer_H
 
 #include <stdio.h>
+#include <pthread.h>
 #include <SFML/Graphics.h>
 #include "../threads/game.h"
 #include "map.h"
@@ -18,6 +19,8 @@ typedef struct Blk{
 }Block;
 
 Block block[blocksCount];
+
+pthread_t game;
 
 void windowInit(int, int, const char *);
 void windowDestroy();

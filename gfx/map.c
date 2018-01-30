@@ -8,7 +8,6 @@ void mapInit(){
    memset(map, 0, sizeof(int) * MAP_HEIGHT * MAP_WIDTH);
    current.siz = -1;
    shapeCleanup();
-   running = true;
 }
 
 void checkScore(){
@@ -60,7 +59,7 @@ void shapeRotate(){
 }
 
 void shapePlace(){
-   if(position.y<0) return;
+   if(position.y<2) exit(0);
    for(int i=0;i<current.siz;i++){
       map[position.y+current.offset[i].y][position.x+current.offset[i].x] = current.offset[i].type;
    }
