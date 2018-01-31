@@ -5,9 +5,11 @@
 #include <unistd.h>
 #include "../gfx/map.h"
 
+//zmienna prędkości
 int speed;
-void *gameStart();
-void gameLoop();
-bool checkMap();
+
+void *gameStart(); //funkcja inicjująca wątek
+void gameLoop();   //Główna pętla wątku opadania
+bool checkMap();   //Sprawdzanie kolizji na mapie
 
 #endif

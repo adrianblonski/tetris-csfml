@@ -22,13 +22,13 @@ Block block[blocksCount];
 
 pthread_t game;
 
-void windowInit(int, int, const char *);
-void windowDestroy();
-void windowShow();
-void drawMap();
-void drawGui(sfSprite *);
-void drawText(const char *, int, int, int);
-void setSpritePos(sfSprite *, int, int);
-Block blockInit(const char *);
+void windowInit(int, int, const char *); //Inicjuje okno
+void windowDestroy(); //Usuwa okno
+void windowShow(); //Pętla wyświetlająca grafikę
+void drawMap(); //Rysowanie mapy
+void drawGui(sfSprite *); //Rysowanie interfejsu
+void drawText(const char *, int, int, int); //Rysowanie tekstu
+void setSpritePos(sfSprite *, int, int); //Ustawianie pozycji "obiektu" graficznego
+Block blockInit(const char *); //"Konstruktor" bloku
 
 #endif
